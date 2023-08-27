@@ -4,6 +4,8 @@ import Tasks, { TaskType } from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
 export default function App() {
+  const [showAddTask, setShowAddTask] = useState<boolean>(false)
+
   const [tasks, setTasks] = useState<TaskType[]>(
     [
       {
@@ -27,21 +29,28 @@ export default function App() {
     ]
   )
 
-  //Delete Task
+  // Add Task
+  const addTask = (task: TaskType) => {
+    const id: number = Math.floor(Math.random() * 10000) + 1
+    const NewTask: TaskType = { 'id': id, 'text': task.text, 'day': task.day, 'reminder': task.reminder }
+    setTasks([...tasks, NewTask])
+  }
+
+  // Delete Task
   const deleteTask = (id: number) => {
     setTasks(tasks.filter((task) => task.id != id))
   }
 
-  //Toggle Reminder
+  // Toggle Reminder
   const toggleReminder = (id: number) => {
-    setTasks(tasks.map((task) => task.id == id ? {...task, reminder: !task.reminder} : task))
+    setTasks(tasks.map((task) => task.id == id ? { ...task, reminder: !task.reminder } : task))
   }
- 
+
   return (
     <div className="container">
-      <Header title='Task Tracker' />
-      <AddTask />
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No tasks'}
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} title='Task Tracker' />
+      {showAddTask && <AddTask onAdd={addTask} />}
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No tasks'}
     </div>
   );
 }

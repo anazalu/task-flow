@@ -1,4 +1,5 @@
 import Task from "./Task";
+
 export interface TaskType {
     id: number;
     text: string;

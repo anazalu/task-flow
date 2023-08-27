@@ -1,0 +1,23 @@
+server:
+  port: 9090
+
+# spring:
+#   # profiles: mock
+#   jpa:
+#     database-platform: org.hibernate.dialect.H2Dialect
+#     generate-ddl: true
+#     hibernate:
+#       ddl-auto: create
+#   datasource:
+#     jdbcUrl: jdbc:h2:mem:PRODUCT
+#     driver-class-name: org.h2.Driver
+#     maximumPoolSize: 10
+#     minimumIdle: 5
+#     idleTimeout: 60000
+#     maxLifetime: 120000
+#     leakDetectionThreshold: 180000
+#     poolName: "product"
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
