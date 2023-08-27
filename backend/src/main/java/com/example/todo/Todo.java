@@ -11,33 +11,33 @@ import jakarta.persistence.Table;
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String name;
+    private Long id;
+    private String text;
     private String dayAndTime;
     private boolean reminder;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getDayAndTime() {
         return dayAndTime;
     }
 
-    public void setDayAndTime(String day) {
-        this.dayAndTime = day;
+    public void setDayAndTime(String dayAndTime) {
+        this.dayAndTime = dayAndTime;
     }
 
     public boolean getReminder() {

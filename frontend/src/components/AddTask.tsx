@@ -7,7 +7,7 @@ export interface AddTaskProps {
 
 export default function AddTask({ onAdd }: AddTaskProps) {
     const [text, setText] = useState<string>('')
-    const [day, setDay] = useState<string>('')
+    const [dayAndTime, setDayAndTime] = useState<string>('')
     const [reminder, setReminder] = useState<boolean>(false)
 
     const onSubmit = (e: any) => {
@@ -18,9 +18,9 @@ export default function AddTask({ onAdd }: AddTaskProps) {
             return
         }
 
-        onAdd({ 'id': 999, 'text': text, 'day': day, 'reminder': reminder })
+        onAdd({ /*'id': 999,*/ 'text': text, 'dayAndTime': dayAndTime, 'reminder': reminder })
         setText('')
-        setDay('')
+        setDayAndTime('')
         setReminder(false)
     }
 
@@ -32,7 +32,7 @@ export default function AddTask({ onAdd }: AddTaskProps) {
             </div>
             <div className='form-control'>
                 <label>Day and Time</label>
-                <input type='text' placeholder='Day and Time' value={day} onChange={(e) => setDay(e.target.value)} />
+                <input type='text' placeholder='Day and Time' value={dayAndTime} onChange={(e) => setDayAndTime(e.target.value)} />
             </div>
             <div className='form-control form-control-check'>
                 <label>Set Reminder</label>

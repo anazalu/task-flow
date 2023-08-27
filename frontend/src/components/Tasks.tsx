@@ -1,16 +1,16 @@
 import Task from "./Task";
 
 export interface TaskType {
-    id: number;
+    id?: number;
     text: string;
-    day: string;
+    dayAndTime: string;
     reminder: boolean;
 }
 
 interface TasksProps {
     tasks: TaskType[];
-    onDelete: (id: number) => void;
-    onToggle: (id: number) => void;
+    onDelete: (id: number | undefined) => void;
+    onToggle: (id: number | undefined) => void;
 }
 
 export default function Tasks({ tasks, onDelete, onToggle }: TasksProps) {
